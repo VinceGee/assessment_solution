@@ -37,6 +37,12 @@
             <artifactId>electronic-payments-dao</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <!--8. This java module depends on the intelligent-network-api module. The errors on missing library can be fixed by adding below dependency.  -->
+        <dependency>
+            <groupId>com.econetwireless</groupId>
+            <artifactId>intelligent-network-api</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
