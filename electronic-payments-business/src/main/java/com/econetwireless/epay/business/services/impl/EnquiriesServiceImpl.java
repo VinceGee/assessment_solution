@@ -33,7 +33,10 @@ public class EnquiriesServiceImpl implements EnquiriesService {
         LOGGER.info("Enquire airtime balance :: Partner Code : {}, Msisdn : {}", partnerCode, msisdn);
         final AirtimeBalanceResponse airtimeBalanceResponse = new AirtimeBalanceResponse();
         final SubscriberRequest subscriberRequest = populate(partnerCode, msisdn);
-        final SubscriberRequest createdSubscriberRequest = subscriberRequestDao.persist(subscriberRequest);
+        /**
+         * 4. Spring data API offers/has various boilerplate API to use. In this case to persist, I can use the save api method. The method persist doesn't exist unless I explicitly define it.
+         * */
+        final SubscriberRequest createdSubscriberRequest = subscriberRequestDao.save(subscriberRequest);
         final INBalanceResponse inBalanceResponse = chargingPlatform.enquireBalance(partnerCode, msisdn);
         changeSubscriberStateOnBalanceEnquiry(createdSubscriberRequest, inBalanceResponse);
         subscriberRequestDao.update(createdSubscriberRequest);
