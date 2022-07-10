@@ -22,6 +22,14 @@ public class EpayResource {
 
     private ReportingProcessor reportingProcessor;
 
+    /**
+     * 9. Added the constructor for the class. The constructor initializes the instance variables in this class.
+     * */
+    public EpayResource(EpayRequestProcessor epayRequestProcessor, ReportingProcessor reportingProcessor) {
+        this.epayRequestProcessor = epayRequestProcessor;
+        this.reportingProcessor = reportingProcessor;
+    }
+
     @GetMapping(value = "enquiries/{partnerCode}/balances/{mobileNumber}",
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public AirtimeBalanceResponse enquireAirtimeBalance( final String pCode, @PathVariable("mobileNumber") final String msisdn) {
