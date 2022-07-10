@@ -35,7 +35,10 @@ public class CreditsServiceImpl implements CreditsService{
         LOGGER.info("Credit airtime Request : {}", airtimeTopupRequest);
         final AirtimeTopupResponse airtimeTopupResponse = new AirtimeTopupResponse();
         final SubscriberRequest subscriberRequest = populateSubscriberRequest(airtimeTopupRequest);
-        final SubscriberRequest createdSubscriberRequest = subscriberRequestDao.persist(subscriberRequest);
+        /**
+         * 6. Spring data API offers several boilerplate API to use. In this case to persist, I can use the save api. The method persist doesn't exist unless I define it.
+         * */
+        final SubscriberRequest createdSubscriberRequest = subscriberRequestDao.save(subscriberRequest);
         final INCreditResponse inCreditResponse = chargingPlatform.creditSubscriberAccount(populate(airtimeTopupRequest));
         changeSubscriberRequestStatusOnCredit(createdSubscriberRequest, inCreditResponse);
         subscriberRequestDao.update(createdSubscriberRequest);
