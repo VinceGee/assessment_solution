@@ -13,7 +13,11 @@ public class PartnerCodeValidatorImpl implements PartnerCodeValidator{
     private RequestPartnerDao requestPartnerDao;
 
     public PartnerCodeValidatorImpl(RequestPartnerDao requestPartnerDao) {
-        this(super);
+        /**
+         * With Java, when you use explicit call to super constructor. The keyword super() should be the first statement.
+         * The is super keyword that may be used to access parent type values.
+         * */
+        super();
         this.requestPartnerDao = requestPartnerDao;
     }
 
