@@ -39,7 +39,10 @@ public class EnquiriesServiceImpl implements EnquiriesService {
         final SubscriberRequest createdSubscriberRequest = subscriberRequestDao.save(subscriberRequest);
         final INBalanceResponse inBalanceResponse = chargingPlatform.enquireBalance(partnerCode, msisdn);
         changeSubscriberStateOnBalanceEnquiry(createdSubscriberRequest, inBalanceResponse);
-        subscriberRequestDao.update(createdSubscriberRequest);
+        /**
+         * 5. Spring data API has boilerplate methods to use. The method update doesn't exist unless I define it. The save method update entries if they exist in the database as long the ID exists.
+         * */
+        subscriberRequestDao.save(createdSubscriberRequest);
         airtimeBalanceResponse.setResponseCode(inBalanceResponse.getResponseCode());
         airtimeBalanceResponse.setNarrative(inBalanceResponse.getNarrative());
         airtimeBalanceResponse.setMsisdn(msisdn);
