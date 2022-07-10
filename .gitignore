@@ -1,0 +1,6 @@
+# Project exclude paths
+/econet-utils/target/
+/electronic-payments-api/target/
+/electronic-payments-business/target/
+/electronic-payments-dao/target/
+/intelligent-network-api/target/
