@@ -9,8 +9,11 @@ import org.slf4j.LoggerFactory;
  * Created by taurai on 10/31/15.
  */
 public class MobileNumberUtils {
-
-    private final Logger LOGGER = LoggerFactory.getLogger(MobileNumberUtils.class);
+    /**
+     * 1. LOGGER variable is an instance final variable. It's being referenced from the static context.
+     * To solve this error I have to add static specifier
+     * */
+    private static final Logger LOGGER = LoggerFactory.getLogger(MobileNumberUtils.class);
 
     private MobileNumberUtils() {
 
