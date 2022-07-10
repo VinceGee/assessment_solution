@@ -38,8 +38,10 @@ public class SubscriberRequest {
     private String reference;
     @Version
     private long version;
-
-    @PreInsert
+    /**
+     * 2. I changed hibernate persistence annotation from PreInsert to PrePersist. PreInsert doesn't exist.
+     * */
+    @PrePersist
     protected void init() {
         if(id == null) {
             id = KeyGen.getUniqueId();
